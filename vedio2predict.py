@@ -2,6 +2,7 @@ import time
 
 import numpy as np
 
+from actionIdentifyUI import finalControlShow
 from i3d_feature_extraction.video_extract_couple_feature import video_feature
 from TriDet.predict import predict
 
@@ -12,12 +13,17 @@ def vedio2predict(video_dir, config_file, ckpt_file, topk=10, level=0.25, mappin
     return predicts
 
 
-if __name__ == "__main__":
-    video_dir = "tmp"
-    config = "./TriDet/configs/thumos_i3d.yaml"
-    ckpt = "./ckpt/thumos_i3d_pretrained/epoch_039.pth.tar"
+def default_predict2show():
+    video_dir = "tmp\\video"
+    config = ".\\TriDet\\configs\\thumos_i3d.yaml"
+    ckpt = "default_ckpt\\epoch_039.pth.tar"
 
     t1 = time.time()
-    result = vedio2predict(video_dir, config, ckpt)
-    print(result)
-    print(time.time() - t1)
+    results = vedio2predict(video_dir, config, ckpt)
+    print('总耗时: ', time.time() - t1, 's')
+
+    for result in results:
+        finalControlShow(result['segments'].tolist(),
+                         result['scores'].tolist(),
+                         result['labels'],
+                         result['file'])
