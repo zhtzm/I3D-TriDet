@@ -3,3 +3,4 @@ data/thumos/annotations/
 data/thumos/i3d_features/
 __pycache__
 *.mp4
+*.pth.tar

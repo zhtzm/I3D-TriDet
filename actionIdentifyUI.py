@@ -50,8 +50,9 @@ def finalControlShow(segments,scores,labels,file):
         secondControlShow(segments[i], scores[i], labels[i], file)
 
 
-segmentsSample=[[1.2,2.9],[7.1,9.1]]
-scoresSample=[0.3,0.5]
-labelsSmple=['walk','run']
-fileSample='videoSample.mp4'
-finalControlShow(segmentsSample,scoresSample,labelsSmple,fileSample)
+if __name__ == "__main__":
+    segmentsSample=[[1.2,2.9],[7.1,9.1]]
+    scoresSample=[0.3,0.5]
+    labelsSmple=['walk','run']
+    fileSample='videoSample.mp4'
+    finalControlShow(segmentsSample,scoresSample,labelsSmple,fileSample)
